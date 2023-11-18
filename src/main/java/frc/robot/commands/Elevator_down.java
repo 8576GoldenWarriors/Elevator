@@ -32,15 +32,18 @@ public class Elevator_down extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(Robot.bottomLimitSwitch.get()==true){
-      elevator.setSpeed(0);
-      end(true);
-    }
+    // if(Robot.bottomLimitSwitch.get()==true){
+    //   elevator.setSpeed(0);
+    //   end(true);
+    // }
+    elevator.setSpeed(elevatorSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    elevator.setSpeed(0);
+  }
 
   // Returns true when the command should end.
   @Override

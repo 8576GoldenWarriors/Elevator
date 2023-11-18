@@ -34,7 +34,9 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    topLimitSwitch = new DigitalInput(0);
+    DigitalInput topLimitSwitch = new DigitalInput(Constants.kTopLimitSwitchPort);
+    DigitalInput middleLimitSwitch = new DigitalInput(Constants.kMiddleLimitSwitchPort);
+    DigitalInput bottomLimitSwitch = new DigitalInput(Constants.kBottomLimitSwitchPort);
   }
 
   /**

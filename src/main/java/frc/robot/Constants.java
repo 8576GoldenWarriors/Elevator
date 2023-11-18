@@ -15,5 +15,11 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+
+    
   }
+
+  public static final int kBottomLimitSwitchPort = 7;
+  public static final int kMiddleLimitSwitchPort = 8;
+  public static final int kTopLimitSwitchPort = 9;
 }

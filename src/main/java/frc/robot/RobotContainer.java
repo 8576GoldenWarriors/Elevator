@@ -8,7 +8,11 @@ import frc.robot.commands.Elevator_down;
 import frc.robot.commands.Elevator_up;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,9 +25,8 @@ public class RobotContainer {
   public static final Elevator m_elevator = new Elevator();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  public static final Joystick controller = new Joystick(0);
-  public static final JoystickButton elevatorUp = new JoystickButton(controller, 4);
-  public static final JoystickButton elevatorDown = new JoystickButton(controller, 2);
+  public static final CommandXboxController m_controller = new CommandXboxController(0);
+  
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -34,9 +37,10 @@ public class RobotContainer {
   }
   
   private void configureBindings() {
+    m_controller.y().whileTrue(new Elevator_up(m_elevator, 0.2));
+    m_controller.a().whileTrue(new Elevator_down(m_elevator, 0.2));
     
-    elevatorUp.whileTrue(new Elevator_up(m_elevator, 0.1));
-    elevatorDown.whileTrue(new Elevator_down(m_elevator, 0.1));
+    
     
   }
 

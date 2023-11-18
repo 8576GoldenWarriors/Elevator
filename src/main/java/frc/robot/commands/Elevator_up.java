@@ -12,6 +12,7 @@ public class Elevator_up extends CommandBase {
   /** Creates a new Elevator_up. */
   Elevator elevator;
   double elevatorSpeed;
+
   public Elevator_up(Elevator elevator, double elevatorSpeed) {
     this.elevator = elevator;
 
@@ -33,10 +34,11 @@ public class Elevator_up extends CommandBase {
   @Override
   public void execute() {
 
-    if(Robot.topLimitSwitch.get()==true){
-      elevator.setSpeed(0);
-      end(true);
-    }
+    // if(Robot.topLimitSwitch.get()==true){
+    //   elevator.setSpeed(0);
+    //   end(true);
+    // }
+    elevator.setSpeed(elevatorSpeed);
   }
 
   // Called once the command ends or is interrupted.
