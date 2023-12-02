@@ -16,8 +16,8 @@ public class Elevator_up extends CommandBase {
   public Elevator_up(Elevator elevator, double elevatorSpeed) {
     this.elevator = elevator;
 
-    //ASSUMING UP IS POSITIVE THROTTLE; CHANGE IF NEEDED
-    this.elevatorSpeed = elevatorSpeed;
+    //ASSUMING UP IS NEGATIVE THROTTLE; CHANGE IF NEEDED
+    this.elevatorSpeed = -elevatorSpeed;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(elevator);
@@ -34,10 +34,10 @@ public class Elevator_up extends CommandBase {
   @Override
   public void execute() {
 
-    // if(Robot.topLimitSwitch.get()==true){
-    //   elevator.setSpeed(0);
-    //   end(true);
-    // }
+    if(Robot.topLimitSwitch.get()==false){
+      elevator.setSpeed(0);
+      end(true);
+    }
     elevator.setSpeed(elevatorSpeed);
   }
 

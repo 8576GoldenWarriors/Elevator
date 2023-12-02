@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -21,6 +22,7 @@ public class Robot extends TimedRobot {
   private RobotContainer m_robotContainer;
 
   public static DigitalInput topLimitSwitch;
+  public static DigitalInput middleLimitSwitch;
   public static DigitalInput bottomLimitSwitch;
 
   /**
@@ -34,10 +36,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    DigitalInput topLimitSwitch = new DigitalInput(Constants.kTopLimitSwitchPort);
-    DigitalInput middleLimitSwitch = new DigitalInput(Constants.kMiddleLimitSwitchPort);
-    DigitalInput bottomLimitSwitch = new DigitalInput(Constants.kBottomLimitSwitchPort);
-  }
+    topLimitSwitch = new DigitalInput(Constants.kTopLimitSwitchPort);
+    middleLimitSwitch = new DigitalInput(Constants.kMiddleLimitSwitchPort);
+    bottomLimitSwitch = new DigitalInput(Constants.kBottomLimitSwitchPort);
+    }
 
   /**
    * This function is called every 20 ms, no matter the mode. Use this for items like diagnostics
@@ -52,6 +54,9 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+    SmartDashboard.putBoolean("Top Limit Switch ", topLimitSwitch.get());
+    SmartDashboard.putBoolean("Bottom Limit Switch ", bottomLimitSwitch.get());
+    //System.out.println("Top:"+topLimitSwitch.get()+"Bottom"+bottomLimitSwitch.get());
     CommandScheduler.getInstance().run();
   }
 

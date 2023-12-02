@@ -15,8 +15,8 @@ public class Elevator_down extends CommandBase {
   public Elevator_down(Elevator elevator, double elevatorSpeed) {
     this.elevator = elevator;
 
-    //ASSUMING UP IS POSITIVE THROTTLE; CHANGE IF NEEDED
-    this.elevatorSpeed = -elevatorSpeed;
+    //ASSUMING UP IS NEGATIVE THROTTLE; CHANGE IF NEEDED
+    this.elevatorSpeed = elevatorSpeed;
 
     addRequirements(elevator);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -32,10 +32,10 @@ public class Elevator_down extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // if(Robot.bottomLimitSwitch.get()==true){
-    //   elevator.setSpeed(0);
-    //   end(true);
-    // }
+    if(Robot.bottomLimitSwitch.get()==false){
+      elevator.setSpeed(0);
+      end(true);
+    }
     elevator.setSpeed(elevatorSpeed);
   }
 

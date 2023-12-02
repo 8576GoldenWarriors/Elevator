@@ -19,7 +19,7 @@ public final class Constants {
     
   }
 
-  public static final int kBottomLimitSwitchPort = 7;
+  public static final int kBottomLimitSwitchPort = 9;
   public static final int kMiddleLimitSwitchPort = 8;
-  public static final int kTopLimitSwitchPort = 9;
+  public static final int kTopLimitSwitchPort = 7;
 }
